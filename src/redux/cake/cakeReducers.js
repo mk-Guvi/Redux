@@ -3,7 +3,7 @@ const initialState = {
   numOfCakes: 10
 };
 const cakeReducer = (state = initialState, action) => {
-  switch (action.types) {
+  switch (action.type) {
     case BUY_CAKE:
       return {
         ...state,
