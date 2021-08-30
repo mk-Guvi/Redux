@@ -14,7 +14,7 @@ function CakeContainer(props) {
 //selectors returns some state information from the redux store.Instead of writing couple of lines in mapsstatetoprops function it is extracted into seperate file called as selectors.
 const mapStateToProps = (state) => {
   return {
-    numOfCakes: state.numOfCakes
+    numOfCakes: state.cake.numOfCakes
   };
 };
 //step-2
