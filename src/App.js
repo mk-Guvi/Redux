@@ -5,12 +5,17 @@ import "./styles.css";
 import HookCakeContainer from "./components/HookCakeContainer";
 import IceCreamContainer from "./components/IceCreamContainer";
 import NewCakeCOntainer from "./components/NewCakeCOntainer";
+import ItemContainer from "./components/ItemContainer";
 //to provide redux store to react application react-redux exports an component called provider.
 
 export default function App() {
   return (
     <Provider store={store}>
       <div className="App">
+        <ItemContainer />
+        {/* cake is a passed as prop */}
+        <ItemContainer cake />
+
         <CakeContainer />
         <br />
         <HookCakeContainer />

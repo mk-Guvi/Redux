@@ -10,7 +10,7 @@ function CakeContainer(props) {
   );
 }
 //step-1
-//this function gets the redux state as a paramter and returns the object
+//this function gets the redux state as a paramter and returns the object.It nas second paramter that refers to the props that has already been passed to the component
 //selectors returns some state information from the redux store.Instead of writing couple of lines in mapsstatetoprops function it is extracted into seperate file called as selectors.
 const mapStateToProps = (state) => {
   return {
