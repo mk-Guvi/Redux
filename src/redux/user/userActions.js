@@ -1,3 +1,4 @@
+import axios from "axios";
 import {
   FETCH_USERS_FAILURE,
   FETCH_USERS_REQUEST,
@@ -5,19 +6,37 @@ import {
 } from "./userTypes";
 export const fetchUsersRequest = () => {
   return {
-    Type: FETCH_USERS_REQUEST
+    type: FETCH_USERS_REQUEST
   };
 };
 export const fetchUsersSuccess = (users) => {
   return {
-    Type: FETCH_USERS_SUCCESS,
-    Payload: users
+    type: FETCH_USERS_SUCCESS,
+    payload: users
   };
 };
 
 export const fetchUsersFailure = (error) => {
   return {
-    Type: FETCH_USERS_FAILURE,
-    Payload: error
+    type: FETCH_USERS_FAILURE,
+    payload: error
+  };
+};
+
+//async actionCreator
+export const fetchUsers = () => {
+  //thunk middleware makes this function to return a funciton instead of object which has dispatch method as its parameter.
+  return (dispatch) => {
+    dispatch(fetchUsersRequest);
+    axios
+      .get("https://jsonplaceholder.typicode.com/users")
+      .then((res) => {
+        const users = res.data;
+        dispatch(fetchUsersSuccess(users));
+      })
+      .catch((error) => {
+        const errorMsg = error.message;
+        dispatch(fetchUsersFailure(errorMsg));
+      });
   };
 };
